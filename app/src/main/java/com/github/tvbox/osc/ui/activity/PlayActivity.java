@@ -476,7 +476,7 @@ public class PlayActivity extends BaseActivity {
 
         stopParse();
         if(mVideoView!=null) mVideoView.release();
-        String progressKey = mVodInfo.sourceKey + mVodInfo.id + mVodInfo.playFlag + mVodInfo.playIndex;
+        String progressKey = mVodInfo.sourceKey + mVodInfo.id + mVodInfo.playFlag + mVodInfo.playIndex + vs.name;
         //存储播放进度
         Object bodyKey=CacheManager.getCache(MD5.string2MD5(progressKey));
         //重新播放清除现有进度
@@ -921,6 +921,9 @@ public class PlayActivity extends BaseActivity {
 
     boolean checkVideoFormat(String url) {
         if (sourceBean.getType() == 3) {
+            if (url.contains("=http") || url.contains(".html")) {
+                return false;
+            }
             Spider sp = ApiConfig.get().getCSP(sourceBean);
             if (sp != null && sp.manualVideoCheck())
                 return sp.isVideoFormat(url);
