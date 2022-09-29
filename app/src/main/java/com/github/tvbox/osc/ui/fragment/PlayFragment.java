@@ -1085,6 +1085,7 @@ public class PlayFragment extends BaseLazyFragment {
                     } else {
                         playUrl(url, null);
                     }
+                    mController.setUrlTitle("视频地址："+url);
                     stopLoadWebView(false);
                 }
             }
@@ -1270,6 +1271,7 @@ public class PlayFragment extends BaseLazyFragment {
                     } else {
                         playUrl(url, null);
                     }
+                    mController.setUrlTitle("视频地址："+url);
                     stopLoadWebView(false);
                 }
             }
